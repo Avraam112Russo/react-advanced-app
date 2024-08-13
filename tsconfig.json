@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+
+    // in our case this props doesn't matter, because we build project usage webpack
+    "outDir": "./dist/",
+
+    // not allowed use variables without specify implicit type
+    "noImplicitAny": true,
+//    "module": "es6",
+    "module": "esnext", //
+
+    // target version for compile
+    "target": "es5",
+
+    // allow .jsx format
+    "jsx": "react-jsx",
+    // Allow handle .js files, not only .ts
+    "allowJs": true,
+    "moduleResolution": "node",
+    "baseUrl": ".", // base url for absolute imports (. -> currently dir )
+    "paths": {
+      "*": ["./src/*"] // all absolute path imports from src folder
+    },
+    // Два свойства для классического импорта, а не import * as webpack from webpack
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+
+
+ // properties for compile imports
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import "reset";
+@import "variables/global";
+@import "themes/dark";
+@import "themes/normal";
+// import this css styles in index.scss and then import index.scss in App.tsx
+
+
+
+.app{
+  font: var(--font-m); // import variable from global.scss
+  background: var(--bg-color);
+  color: var(--primary-color);
+
+
+  min-height: 100vh;
+}
