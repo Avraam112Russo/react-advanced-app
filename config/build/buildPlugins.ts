@@ -19,6 +19,7 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         }),
         new webpack.DefinePlugin({
             __IS_DEV__ : isDev //  use variable __IS_DEV in i18n
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin() // accept code changes without refresh page
     ]
 }
