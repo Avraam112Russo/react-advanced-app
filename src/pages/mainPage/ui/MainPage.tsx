@@ -1,9 +1,12 @@
 import React from 'react';
+import {useTranslation} from "react-i18next";
 
 const MainPage = () => {
+    const {t} = useTranslation('mainPage');// loading translate only mainPage.json chunk
     return (
         <div>
-            main page
+            {t('Главная')}
+            {/*t('Key')*/}
         </div>
     );
 };
