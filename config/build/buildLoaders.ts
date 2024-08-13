@@ -5,6 +5,21 @@ import {BuildOptions} from "./type/config";
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const {isDev} = options;
 
+    const fileLoader = {
+            test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+            use: [
+                {
+                    loader: 'file-loader',
+                },
+            ],
+        };
+
+    const svgLoader = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    };
+
+
 
     // if we don't use typescript, so we need install Babel
     // in our case we don't need babel
@@ -40,7 +55,9 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
             ],
         }
     return [
+        fileLoader,
+        svgLoader,
         typeScriptLoader,
-        scssLoader
+        scssLoader,
     ]
 }

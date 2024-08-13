@@ -8,19 +8,19 @@ import {AboutPage} from "pages/aboutPage";
 import {MainPage} from "pages/mainPage";
 import {AppRouter} from "app/providers/router";
 import {NavBar} from "widgets/navBar";
+import {SideBar} from "widgets/sideBar";
 
 
 
 const App = () => {
-    const {theme, toggleTheme} = useTheme();
+    const {theme} = useTheme();
     return (
         <div className={classNames('app', {}, [theme])}>
-
             <NavBar/>
-            <button onClick={toggleTheme}>
-                TOGGLE
-            </button>
+            <div  className={classNames("content-page")}>
+            <SideBar/>
             <AppRouter/>
+            </div>
         </div>
     );
 };
