@@ -7,7 +7,11 @@ declare module '*.scss' {
     const classNames: IClassNames;
     export = classNames;
 }
-
+// declaration.d.ts
+// declare module '*.scss' {
+//     const content: Record<string, string>;
+//     export default content;
+// }
 // imports for typescript
 declare module "*.png";
 declare module "*.jpg";

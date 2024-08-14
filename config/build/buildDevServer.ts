@@ -16,6 +16,9 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
         //  Allows to proxy requests through a specified index page (by default 'index.html'),
         // useful for Single Page Applications that utilise the HTML5 History API.
         historyApiFallback: true,
-        hot: true // enable hotModuleReplacementPlugin
+        hot: true, // enable hotModuleReplacementPlugin,
+        client: {
+            overlay: false, // for work errorBoundary
+        },
     }
 }
