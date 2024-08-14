@@ -24,6 +24,7 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
 
     ]
     // we need this plugins only in development
+    // ci pipeline work without this plugins
     if (isDev == true){
     plugins.push( new webpack.HotModuleReplacementPlugin()) // accept code changes without refresh page,);
     plugins.push(new BundleAnalyzerPlugin({openAnalyzer: false}))// auto open user interface for detail analyze http://127.0.0.1:8888/
