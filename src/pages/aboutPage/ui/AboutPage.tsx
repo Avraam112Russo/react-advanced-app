@@ -5,6 +5,7 @@ import {Counter} from "entities/counter";
 const AboutPage = () => {
     const {t} = useTranslation('aboutPage'); // loading translate only aboutPage.json chunk
     return (
+        //
         <div>
             {t('О сайте')}
             <div>
