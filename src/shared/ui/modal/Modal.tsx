@@ -8,11 +8,21 @@ export interface ModalProps {
     children?: ReactNode, // content inside modal window
     isOpen?: boolean, // open modal window
     onClose?: () => void, // function for close modal window
+    lazy?: boolean // lazy loading modal window
 }
-export const Modal = ({className, children, isOpen, onClose}:ModalProps) => {
+export const Modal = (props:ModalProps) => {
 
+    const {className, children, isOpen, onClose, lazy} = props;
     const [closing, setIsClosing] = useState(false);
-    const timeRef = useRef<ReturnType<typeof setTimeout>>(); // in generic, we set type which return setTimeout() function
+
+
+    // lazy loading modal window
+    const [isMounted, setIsMounted] = useState(false);
+
+
+
+    // in generic, we set type which return setTimeout() function
+    const timeRef = useRef<ReturnType<typeof setTimeout>>();
 
 
     // useCallback store link, and we don't create new link after each call method if dependencies array didn't update
@@ -20,7 +30,7 @@ export const Modal = ({className, children, isOpen, onClose}:ModalProps) => {
         // if props OnClose come in argument<Modal/>
         if (onClose){
             setIsClosing(true);
-            // timeout after click close modal window for smooth close
+            // timeout after click for smooth close modal window
             timeRef.current = setTimeout(() => {
                 onClose();
             setIsClosing(false);
@@ -33,6 +43,17 @@ export const Modal = ({className, children, isOpen, onClose}:ModalProps) => {
             onCloseHandler();
         }
     },[onCloseHandler])
+
+
+    useEffect(() => {
+        // lazy loading modal window
+        // if modal window was opened first time, we mount it in dom
+        if (isOpen == true){
+            setIsMounted(true)
+        }
+    }, [isOpen]);
+
+
     useEffect(() => {
         if (isOpen === true){
             // if modal window is open, we add event listener
@@ -56,6 +77,11 @@ export const Modal = ({className, children, isOpen, onClose}:ModalProps) => {
         event.stopPropagation();
     }
 
+    // if lazy props come, modal window don't mount in DOM
+    // only after first time open
+    if (lazy && isMounted == false){
+        return null;
+    }
     return (
         <Portal>
         <div className={classNames(cls.Modal, MODS_CLASSNAMES, [className])}>

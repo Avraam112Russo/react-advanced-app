@@ -15,6 +15,7 @@ export enum ButtonSIze{
     SIZE_L = 'size_l',
     SIZE_XL = 'size_xl',
 }
+// extends ButtonHTMLAttributes<HTMLButtonElement> for retrieve all basic props from React button
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string,
     buttonTheme?: ButtonTheme
