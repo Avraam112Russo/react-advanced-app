@@ -4,14 +4,16 @@
 @import "themes/normal";
 // import this css styles in index.scss and then import index.scss in App.tsx
 
-
+body{
+  font: var(--font-m); // import variable from global.scss
+}
 
 .app{
-  font: var(--font-m); // import variable from global.scss
-  background: var(--bg-color);
+
+
+
   color: var(--primary-color);
-
-
+  background: var(--bg-color);
   min-height: 100vh;
 }
 

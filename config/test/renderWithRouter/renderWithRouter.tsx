@@ -8,6 +8,8 @@ export interface renderWithRouterProps {
 export interface RenderWithRouteProps{
     route?: string
 }
+
+// testing jest routes
 export function RenderWithRouter (component: ReactNode, options: RenderWithRouteProps = {}) {
     const {route = '/'} = options;
     return render(

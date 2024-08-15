@@ -1,0 +1,51 @@
+.Modal{
+  position: fixed;
+
+  // full window
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  // when modal window is closed
+  opacity: 0;
+  pointer-events: none; // forbidden click to modal
+  z-index: -1;
+}
+
+.overlay{
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content{
+  padding: 20px;
+  border-radius: 15px;
+  background: white;
+  //background: var(--bg-color);
+
+  // smooth open modal window
+  transition: 0.5s transform;
+  transform: scale(0.5);
+  max-width: 60%;
+}
+.opened{
+  pointer-events: auto;
+  opacity: 1;
+  z-index: var(--modal-z-index);
+
+}
+
+
+.contentOpened{
+  transform: scale(1); // when modal window is opened we return scale 1
+}
+.isClosing{
+  .content{
+    transform: scale(0.2);
+  }
+}
+
