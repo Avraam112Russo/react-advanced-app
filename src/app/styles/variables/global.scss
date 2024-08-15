@@ -17,8 +17,24 @@
   --font-line-l: 32px; // global font line height
   --font-l: var( --font-size-l) / var(--font-line-l) var(--font-family-main); // union three variables in one main variable
 
+  --font-size-xl: 32px; // global font size
+  --font-line-xl: 40px; // global font line height
+  --font-xl: var( --font-size-xl) / var(--font-line-xl) var(--font-family-main); // union three variables in one main variable
+
+
+
   // height navbar
   --navbar-height: 50px;
   --sidebar-width: 300px;
   --sidebar-width-collapsed: 80px;
+
+
+  // z-indexes
+  --modal-z-index: 1000;
+
+
+
+  // colors
+  --overlay-color: rgb(0 0 0 / 60%);
+
 }
