@@ -14,9 +14,7 @@ export const NavBar = ({className}:NavBarProps) => {
         <div className={classNames(cls.navbar)}>
 
             <div className={classNames(cls.links)}>
-                <AppLink
-                    className={classNames(cls.mainPageLink)} to={"/"}>{t('Главная')}</AppLink>
-                <AppLink to={"/about"}>{t('О сайте')}</AppLink>
+
             </div>
 
         </div>

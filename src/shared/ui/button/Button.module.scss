@@ -16,3 +16,43 @@
   background: none;
 
 }
+.background{
+  color: var(--primary-color);
+  background: var(--bg-color);
+  border: none;
+}
+.background__inverted{
+  color: var(--inverted-primary-color);
+  background: var(--inverted-bg-color);
+  border: none;
+}
+
+.square{
+  padding: 0;
+}
+
+.square.size_m{
+  height: var(--font-line-m);
+  width: var(--font-line-m);
+
+}
+
+.square.size_l{
+  height: var(--font-line-l);
+  width: var(--font-line-l);
+  font: var(--font-l);
+}
+.square.size_xl{
+  height: var(--font-line-xl);
+  width: var(--font-line-xl);
+  font: var(--font-xl);
+}
+.font_m{
+  font: var(--font-m);
+}
+.font_l{
+  font: var(--font-l);
+}
+.font_xl{
+  font: var(--font-xl);
+}
