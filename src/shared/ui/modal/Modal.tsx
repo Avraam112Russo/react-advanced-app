@@ -83,6 +83,8 @@ export const Modal = (props:ModalProps) => {
         return null;
     }
     return (
+
+        // usage react portal we can teleport element to any place in the DOM
         <Portal>
         <div className={classNames(cls.Modal, MODS_CLASSNAMES, [className])}>
            <div

@@ -11,13 +11,21 @@ import {useTranslation} from "react-i18next";
 import "shared/config/i18n/i18n"
 import {Modal} from "shared/ui/modal/Modal";
 import {Button} from "shared/ui/button/Button";
+import {useDispatch} from "react-redux";
+import {userActions} from "entities/user";
 
 
 
 const App = () => {
     const {theme} = useTheme();
     const[isOpenModalWindow, setIsOpenModalWindow] = useState(false);
+    const dispatch = useDispatch();
 
+
+    // set state user auth after user get successfully auth, close our app and open again
+    useEffect(() => {
+        dispatch(userActions.initAuthData())
+    }, [dispatch]);
 
     return (
         <div className={classNames('app', {}, [theme])}>

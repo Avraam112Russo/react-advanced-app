@@ -9,5 +9,8 @@
   "Произошла непредвиденная ошибка": "Something went wrong",
   "Обновить страницу": "Refresh page",
   "Lan": "Рус",
-  "Войти": "Login"
+  "Войти": "Login",
+  "Форма авторизации": "Login form",
+  "Неверный логин или пароль": "Wrong username or password",
+  "Выйти": "Logout"
 }
