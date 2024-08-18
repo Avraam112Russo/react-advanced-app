@@ -1,14 +1,16 @@
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "shared/lib/classNames/classNames";
 import cls from "./LangSwitcher.module.scss"
 import {useTranslation} from "react-i18next";
-import React from "react";
+import React, {memo} from "react";
 import {Button, ButtonTheme} from "shared/ui/button/Button";
 
 export interface LangSwitcherProps {
     className?: string,
     shortlyWhenSideBarCollapse?: boolean
 }
-export const LangSwitcher = ({className, shortlyWhenSideBarCollapse}:LangSwitcherProps) => {
+// memo === useMemo()
+// useMemo -> cache component <LangSwitcher/>, don't render again while dependencies array will not change
+export const LangSwitcher = memo(({className, shortlyWhenSideBarCollapse}:LangSwitcherProps) => {
         const {t, i18n} = useTranslation();
         const toggleLanguage =  async () => {
             i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
@@ -21,4 +23,4 @@ export const LangSwitcher = ({className, shortlyWhenSideBarCollapse}:LangSwitche
                {t(shortlyWhenSideBarCollapse === true ? 'Lan' : 'Язык')}
            </Button>
     );
-};
+});

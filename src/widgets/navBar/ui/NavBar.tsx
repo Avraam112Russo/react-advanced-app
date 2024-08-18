@@ -1,5 +1,5 @@
-import React, {useCallback, useState} from 'react';
-import {classNames} from "shared/lib/classNames";
+import React, {memo, useCallback, useState} from 'react';
+import {classNames} from "shared/lib/classNames/classNames";
 import cls from "./NavBar.module.scss"
 import {useTranslation} from "react-i18next";
 import {Modal} from "shared/ui/modal/Modal";
@@ -12,7 +12,8 @@ import {userActions} from "entities/user";
 export interface NavBarProps {
     className?: string;
 }
-export const NavBar = ({className}:NavBarProps) => {
+//memo() cached component
+export const NavBar = memo(({className}:NavBarProps) => {
     const {t} = useTranslation();
     const dispatch = useDispatch();
 
@@ -39,7 +40,7 @@ export const NavBar = ({className}:NavBarProps) => {
         return (<div className={classNames(cls.navbar)}>
 
             <Button
-                onClick={onShowModal}
+                onClick={onLogout}
                 buttonTheme={ButtonTheme.OUTLINE} className={classNames(cls.links)}>
                 {t('Выйти')}
             </Button>
@@ -52,14 +53,21 @@ export const NavBar = ({className}:NavBarProps) => {
 
             <Button
                 onClick={onShowModal}
-                buttonTheme={ButtonTheme.OUTLINE} className={classNames(cls.links)}>
+                buttonTheme={ButtonTheme.BACKGROUND_INVERTED} className={classNames(cls.links)}>
                 {t('Войти')}
             </Button>
-            <LoginModal
+            {
+                // if isOpenAuthModal == false, we remove modal window from DOM
+
+                isOpenAuthModal == true
+                &&
+                <LoginModal
                 isOpen={isOpenAuthModal}
                 onClose={onCloseModal}
-            />
+                />
+            }
+
 
         </div>
     );
-};
+});

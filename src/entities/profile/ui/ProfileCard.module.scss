@@ -1,0 +1,23 @@
+.ProfileCard{
+  padding: 30px;
+  border: 2px solid var(--inverted-bg-color);
+}
+
+
+.data{
+  align-items: center;
+}
+.input{
+  border: none;
+}
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+//.avatarWrapper{
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//}

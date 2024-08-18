@@ -1,4 +1,4 @@
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "shared/lib/classNames/classNames";
 import {ReactNode} from "react";
 import {render} from "@testing-library/react";
 import {MemoryRouter} from "react-router-dom";

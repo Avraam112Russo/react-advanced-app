@@ -6,14 +6,14 @@ import {ErrorBoundary} from "app/providers/errorBoundary";
 import "./app/styles/index.scss"
 import {StoreProvider} from "app/providers/storeProvider";
 render(
-    <StoreProvider>
-    <ErrorBoundary>{/* handle error*/}
     <BrowserRouter>
+    <StoreProvider >
+    <ErrorBoundary>{/* handle error*/}
         <ThemeProvider>
         <App/>
         </ThemeProvider>
-    </BrowserRouter>
     </ErrorBoundary>
-    </StoreProvider>,
+    </StoreProvider>
+    </BrowserRouter>,
     document.getElementById("root")
 )

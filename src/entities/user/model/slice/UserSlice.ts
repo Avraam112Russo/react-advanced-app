@@ -25,7 +25,7 @@ export const userSlice = createSlice({
             }
         },
 
-        // reducer fpr user logout, clear state and remove token from local storage
+        // reducer for user logout, clear state and remove token from local storage
         logout: (state) => {
             state.userAuthData = undefined;
             localStorage.removeItem(LOCAL_STORAGE_USER_KEY)

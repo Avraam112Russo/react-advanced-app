@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import {CounterSchema} from "entities/counter/model/types/CounterSchema";
 import {UserSchema} from "entities/user/model/type/User";
 import {LoginSchema} from "features/authByUsername/model/types/LoginSchema";
-import {loginByUsername} from "features/authByUsername/services/loginByUsername/LoginByUsername";
+import {loginByUsername} from "features/authByUsername/model/services/loginByUsername/LoginByUsername";
 
 const initialState:LoginSchema = {
     isLoading:false,

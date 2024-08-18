@@ -1,4 +1,4 @@
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "shared/lib/classNames/classNames";
 import {useDispatch, useSelector} from "react-redux";
 import {counterActions} from "entities/counter/model/slice/CounterSlice";
 import {StateSchema} from "app/providers/storeProvider/config/StateSchema";

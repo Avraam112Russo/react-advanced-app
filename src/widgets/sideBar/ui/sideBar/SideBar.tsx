@@ -1,24 +1,38 @@
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "shared/lib/classNames/classNames";
 import cls from "./SideBar.module.scss"
-import React, {useState} from "react";
+import React, {memo, useMemo, useState} from "react";
 import {Button, ButtonSIze, ButtonTheme} from "shared/ui/button/Button";
 import {ThemeSwitcher} from "widgets/themeSwitcher";
 import {LangSwitcher} from "widgets/langSwitcher/LangSwitcher";
-import {AppLink} from "shared/ui/appLink/AppLink";
 import {useTranslation} from "react-i18next";
-import {RoutePath} from "shared/config/routeConfig/RouteConfig";
-import MainIcon from "shared/assets/icons/main-icon.svg"
-import AboutUsIcon from "shared/assets/icons/about-us-icon.svg"
+
+import {SideBarItemList} from "widgets/sideBar/model/item";
+import {SideBarItem} from "widgets/sideBar/ui/sideBarItem/SideBarItem";
+import {useSelector} from "react-redux";
+import {StateSchema} from "app/providers/storeProvider";
 
 export interface SideBarProps {
     className?: string;
 }
-export const SideBar = ({className}:SideBarProps) => {
+// memo() cached component
+export const SideBar = memo(({className}:SideBarProps) => {
     const [collapse, setCollapsed] = useState(false); // сайд бар развернут или свернут
     const onToggle = () => {
         setCollapsed(prevState => !prevState);
     }
     const {t} = useTranslation();
+
+
+    // useMemo -> cache component <SideBarItem/>, while dependencies array will not change [collapse]
+    const itemsList = useMemo(() => SideBarItemList.map((item) => (
+
+            <SideBarItem
+                key={item.path}
+                collapsed={collapse}
+                item={item} />
+        )
+    ), [collapse])
+
     return (
         <div
             data-testid="sideBar"
@@ -37,21 +51,15 @@ export const SideBar = ({className}:SideBarProps) => {
 
 
             <div className={classNames(cls.items)}>
+                {SideBarItemList.map((item) => (
 
-                <AppLink
-                    className={cls.item}
-                    to={RoutePath.main}>
-                    <MainIcon className={cls.icon}/>
-                    <span className={classNames(cls.link)}>{t('Главная')}</span>
-                </AppLink>
-                <AppLink
-                    className={cls.item}
-                    to={RoutePath.about}>
-                    <AboutUsIcon className={cls.icon}/>
-                    <span className={classNames(cls.link)}>
-                    {t('О сайте')}
-                    </span>
-                </AppLink>
+                        <SideBarItem
+                            key={item.path}
+                            collapsed={collapse}
+                            item={item} />
+                    )
+                )}
+
                 </div>
 
             <div className={classNames(cls.switchers)}>
@@ -63,4 +71,4 @@ export const SideBar = ({className}:SideBarProps) => {
             </div>
         </div>
     );
-};
+});

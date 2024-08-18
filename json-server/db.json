@@ -31,5 +31,15 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "RussoUpdate",
+    "lastname": "Ульби",
+    "age": 22,
+    "currency": "USD",
+    "country": "BELARUS",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg",
+    "value": "USD"
+  }
 }

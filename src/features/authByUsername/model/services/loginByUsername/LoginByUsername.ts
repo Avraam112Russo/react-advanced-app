@@ -4,6 +4,7 @@ import {User, userActions} from "entities/user";
 import {useTranslation} from "react-i18next";
 import i18n from "shared/config/i18n/i18n";
 import {LOCAL_STORAGE_USER_KEY} from "shared/global_const/local_storage";
+import {ThunkConfig} from "app/providers/storeProvider/config/StateSchema";
 
 
 export interface RequestLoginToApiProps {
@@ -17,12 +18,21 @@ export const loginByUsername =
 
     // User - return value from backend, RequestLoginToApiProps - value for request, {rejectValue: string} - override type for error
     // see createAsyncThunk -> AsyncThunkConfig
-    createAsyncThunk<User, RequestLoginToApiProps, {rejectValue: string}>(
-    'users/fetchByIdStatus',
+    createAsyncThunk<User, RequestLoginToApiProps, ThunkConfig<string>>(
+    'login/loginByUsername',
         async ({username, password}:RequestLoginToApiProps, thunkAPI) => {
             // const {t} = useTranslation();
+            const {
+                extra,
+                dispatch,
+                rejectWithValue
+            } = thunkAPI;
+
         try {
-            const response = await axios.post("http://localhost:8080/login",{username, password})
+
+            // user -> return type // thunkApi.extra.api we set axios in store.ts
+            // @ts-ignore
+            const response = await extra.api.post<User>("/login", {username, password})
 
             // if backend return empty response
             if (!response.data){
@@ -31,14 +41,14 @@ export const loginByUsername =
             // convert response from json to string and set in local storage
             // in real project we will store JWT token
             localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(response.data))
-
-
             // set username and id in state after successfully authentication
-            thunkAPI.dispatch(userActions.setAuthData(response.data))
+            dispatch(userActions.setAuthData(response.data))
+            // redirect to /profile after login successfully
+            extra.navigate('/profile')
             return response.data
         }catch (error){
             console.log("Something went wrong: " + error);
-            return thunkAPI.rejectWithValue(i18n.t('Неверный логин или пароль'));
+            rejectWithValue(i18n.t('Неверный логин или пароль'));
         }
     },
 )

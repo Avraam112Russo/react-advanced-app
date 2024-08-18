@@ -1,12 +1,13 @@
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "shared/lib/classNames/classNames";
 import cls from "./Button.module.scss"
-import {ButtonHTMLAttributes, FC} from "react";
+import {ButtonHTMLAttributes, FC, memo} from "react";
 
 
 
 export enum ButtonTheme {
     CLEAR = "clear",
     OUTLINE = "outline",
+    OUTLINE_RED = "outline_red",
     BACKGROUND = "background",
     BACKGROUND_INVERTED = "background__inverted",
 }
@@ -23,7 +24,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSIze,
     disabled?: boolean
 }
-export const Button:FC<ButtonProps> = (props) => {
+
+
+// if component have a children, we don't need memo(), BUT!!! button in 99% case have a simple static string and we can use memo()
+export const Button:FC<ButtonProps> = memo((props) => {
     const {children,
         className,
         square,
@@ -45,4 +49,4 @@ export const Button:FC<ButtonProps> = (props) => {
             {children}
         </button>
     );
-};
+});

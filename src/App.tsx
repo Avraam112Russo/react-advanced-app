@@ -1,7 +1,7 @@
 import React, {Suspense, useContext, useEffect, useState} from 'react';
 
 import {useTheme} from "app/providers/themeProvider";
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "shared/lib/classNames/classNames";
 import {AboutPage} from "pages/aboutPage";
 import {MainPage} from "pages/mainPage";
 import {AppRouter} from "app/providers/router";
@@ -13,6 +13,7 @@ import {Modal} from "shared/ui/modal/Modal";
 import {Button} from "shared/ui/button/Button";
 import {useDispatch} from "react-redux";
 import {userActions} from "entities/user";
+import {Select, Select_Type_Option} from "shared/ui/select/Select";
 
 
 
@@ -27,14 +28,14 @@ const App = () => {
         dispatch(userActions.initAuthData())
     }, [dispatch]);
 
+
+
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback={<div>Loading...</div>}>
                 {/*<Suspense/> for i18n translation*/}
             <NavBar/>
-                <Button onClick={() => setIsOpenModalWindow(true)}>
-                    OPEN
-                </Button>
+
 
             <div  className={classNames("content-page")}>
             <SideBar/>

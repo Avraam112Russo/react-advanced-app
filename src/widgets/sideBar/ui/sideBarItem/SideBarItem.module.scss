@@ -1,0 +1,30 @@
+.item{
+  margin-top: 20px;
+  display: flex;
+}
+.icon{
+  fill: var(--inverted-primary-color);
+}
+
+
+.link{
+  margin-left: 10px;
+}
+
+
+
+.collapsed{
+  width: var(--sidebar-width-collapsed);
+
+  .switchers{
+    flex-direction: column; // langswitcher and themeswitcher in flex direction when collapse == true
+  }
+  .lang{
+    margin-left: 0;
+  }
+  .link{
+    opacity: 0;
+    transition: opacity 0.1s;
+    width: 0;
+  }
+}

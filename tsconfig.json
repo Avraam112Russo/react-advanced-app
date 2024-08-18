@@ -9,6 +9,7 @@
 //    "module": "es6",
     "module": "esnext", //
 
+//    "strict": true,
     // target version for compile
     "target": "es5",
      // for react-jest tests

@@ -1,4 +1,4 @@
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "shared/lib/classNames/classNames";
 import "./PageLoader.scss"
 import {Loader} from "shared/ui/loader/Loader";
 export interface PageLoaderProps {

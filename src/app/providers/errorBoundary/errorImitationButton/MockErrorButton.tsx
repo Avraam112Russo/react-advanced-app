@@ -1,4 +1,4 @@
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "shared/lib/classNames/classNames";
 import {useEffect, useState} from "react";
 import {Button} from "shared/ui/button/Button";
 export interface MockErrorProps {
