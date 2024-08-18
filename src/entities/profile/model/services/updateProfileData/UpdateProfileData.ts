@@ -1,16 +1,15 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {Profile} from "entities/profile";
 import {ThunkConfig} from "app/providers/storeProvider/config/StateSchema";
-import i18n from "shared/config/i18n/i18n";
-import {useSelector} from "react-redux";
 import {getProfileFormAndData} from "entities/profile/model/selectors/getProfileData/getProfileFormAndData";
-
+import {validateProfile} from "entities/profile/model/services/validateProfile/ValidateProfile";
+import {VALIDATE_PROFILE_ERROR} from "entities/profile/model/types/profile";
 
 
 export const UpdateProfileData =
 
     //
-    createAsyncThunk<Profile, void, ThunkConfig<string>>(
+    createAsyncThunk<Profile, void, ThunkConfig<VALIDATE_PROFILE_ERROR[]>>(
         'profile/updateProfileData',
 
 
@@ -31,11 +30,14 @@ export const UpdateProfileData =
                 const response = await extra.api.put<Profile>("/profile", formData)
 
                 const data = response.data;
-                console.log(data)
+                const validateProfileErrors = validateProfile(data);
+                if (validateProfileErrors.length > 0){
+                    return rejectWithValue(validateProfileErrors)
+                }
                 return data
             }catch (error){
-                console.log("Something went wrong: " + error);
-                rejectWithValue(i18n.t('Неверный логин или пароль'));
+                console.log("VALIDATE_PROFILE_ERROR SERVER_ERROR_500: " + error);
+                rejectWithValue([VALIDATE_PROFILE_ERROR.SERVER_ERROR_500]);
             }
         },
     )

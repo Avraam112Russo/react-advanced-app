@@ -11,9 +11,10 @@ import {useTranslation} from "react-i18next";
 import "shared/config/i18n/i18n"
 import {Modal} from "shared/ui/modal/Modal";
 import {Button} from "shared/ui/button/Button";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {userActions} from "entities/user";
 import {Select, Select_Type_Option} from "shared/ui/select/Select";
+import {StateSchema} from "app/providers/storeProvider";
 
 
 
@@ -21,7 +22,7 @@ const App = () => {
     const {theme} = useTheme();
     const[isOpenModalWindow, setIsOpenModalWindow] = useState(false);
     const dispatch = useDispatch();
-
+    const init_user = useSelector((state:StateSchema) => state?.user?._inited);
 
     // set state user auth after user get successfully auth, close our app and open again
     useEffect(() => {
@@ -39,7 +40,8 @@ const App = () => {
 
             <div  className={classNames("content-page")}>
             <SideBar/>
-            <AppRouter/>
+
+                {init_user && <AppRouter/>}
             </div>
             </Suspense>
         </div>

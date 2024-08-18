@@ -1,7 +1,5 @@
 import {useTranslation} from "react-i18next";
-import MainPage from "pages/mainPage/ui/MainPage";
 import {useCallback, useEffect} from "react";
-import {loginReducer} from "features/authByUsername/model/slice/LoginSlice";
 import {useSelector, useStore} from "react-redux";
 import {Redux_Store_With_Manager, StateSchema} from "app/providers/storeProvider";
 import {useAppDispatch} from "app/providers/storeProvider/config/store";
@@ -16,6 +14,9 @@ import {MyCurrency} from "entities/currency/model/types/Currency";
 
 
 import {MyCountry} from "entities/country/model/types/Country";
+import {getValidateError} from "entities/profile/model/selectors/getValidateError/getValidateError";
+import {Text, TextTheme} from "shared/ui/text/Text";
+
 export interface ProfilePageProps {
     className?: string;
 }
@@ -33,8 +34,14 @@ const reducers: ReducersList = {
      const error = useSelector(GetProfileError)
      const isLoading = useSelector(GetProfileIsLoading)
     const readOnly = useSelector((state: StateSchema) => state?.profile?.readonly)
-
+    const validateErrors = useSelector(getValidateError)
      const store = useStore() as Redux_Store_With_Manager
+
+
+
+
+
+
      // useEffect(() => {
      //     store.reducerManager.add('profile', ProfileReducer) // loading reducer
      //     dispatch({type: "@INIT PROFILE form reducer"})// just for testing, show in redux devtools in browser
@@ -75,8 +82,19 @@ const reducers: ReducersList = {
          dispatch(ProfileActions.updateProfile({country: value || '' }))
      }, [dispatch])
 
+
+
+
      return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+
+            {/*if we have some error*/}
+            <div>
+                {validateErrors?.length > 0 && validateErrors.map((error) => (
+                    <Text
+                        key={error}
+                        text={error} theme={TextTheme.ERROR}/>
+                ))}
             <ProfilePageHeader/>
             <ProfileCard
                 onChangeCountry={onChangeCountry}
@@ -91,6 +109,7 @@ const reducers: ReducersList = {
             isLoading={isLoading}
             error={error}
             data={data_and_form}/>
+            </div>
         </DynamicModuleLoader>
     );
 };

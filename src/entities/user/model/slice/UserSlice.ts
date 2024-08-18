@@ -4,7 +4,9 @@ import {CounterSchema} from "entities/counter/model/types/CounterSchema";
 import {User, UserSchema} from "entities/user/model/type/User";
 import {LOCAL_STORAGE_USER_KEY} from "shared/global_const/local_storage";
 
-const initialState:UserSchema = {}
+const initialState:UserSchema = {
+    _inited: false
+}
 
 
 export const userSlice = createSlice({
@@ -23,6 +25,8 @@ export const userSlice = createSlice({
             if (user){
                 state.userAuthData = JSON.parse(user);
             }
+                // init state in any case
+                state._inited=true;
         },
 
         // reducer for user logout, clear state and remove token from local storage
