@@ -16,6 +16,7 @@ import {MyCurrency} from "entities/currency/model/types/Currency";
 import {MyCountry} from "entities/country/model/types/Country";
 import {getValidateError} from "entities/profile/model/selectors/getValidateError/getValidateError";
 import {Text, TextTheme} from "shared/ui/text/Text";
+import {useParams} from "react-router-dom";
 
 export interface ProfilePageProps {
     className?: string;
@@ -36,7 +37,7 @@ const reducers: ReducersList = {
     const readOnly = useSelector((state: StateSchema) => state?.profile?.readonly)
     const validateErrors = useSelector(getValidateError)
      const store = useStore() as Redux_Store_With_Manager
-
+    const {id} = useParams<{id: string}>(); // get id from url
 
 
 
@@ -51,11 +52,20 @@ const reducers: ReducersList = {
      //
      //     }
      // }, []);
+
+
+
+
+
     const dispatch = useAppDispatch();
      useEffect(() => {
-         dispatch(FetchProfileData())
+         if(id){
+         dispatch(FetchProfileData(id))
+         }
      }, [dispatch]);
 
+
+     // update data usage actions
      const onChangeFirstName = useCallback((value?:string)=> {
         dispatch(ProfileActions.updateProfile({first: value || '' }))
       }, [dispatch])

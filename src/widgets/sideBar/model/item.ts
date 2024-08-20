@@ -1,5 +1,5 @@
 import React from "react";
-import {RoutePath} from "shared/config/routeConfig/RouteConfig";
+import {RoutePath} from "app/providers/router/routeConfig/RouteConfig";
 import MainIcon from "shared/assets/icons/main-icon.svg";
 import AboutUsIcon from "shared/assets/icons/articles.svg";
 import ProfileIcon from "shared/assets/icons/profile-icon.svg";

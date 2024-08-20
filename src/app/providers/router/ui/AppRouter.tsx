@@ -2,7 +2,7 @@ import React, {memo, Suspense, useCallback, useMemo} from 'react';
 import {Route, Routes} from "react-router-dom";
 import {AboutPage} from "pages/aboutPage";
 import {MainPage} from "pages/mainPage";
-import {AppRouteProps, AppRoutes, routeConfig} from "shared/config/routeConfig/RouteConfig";
+import {AppRouteProps, AppRoutes, routeConfig} from "app/providers/router/routeConfig/RouteConfig";
 import {PageLoader} from "widgets/pageLoader/PageLoader";
 import {useSelector} from "react-redux";
 import {StateSchema} from "app/providers/storeProvider";

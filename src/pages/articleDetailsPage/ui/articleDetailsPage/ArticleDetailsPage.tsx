@@ -1,6 +1,6 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from "./ArticleDetailsPage.module.scss"
-import {memo, useEffect} from "react";
+import {memo, useCallback, useEffect} from "react";
 import {ArticleDetails} from "entities/article";
 import {useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
@@ -20,6 +20,8 @@ import {useAppDispatch} from "app/providers/storeProvider/config/store";
 import {
     FetchCommentByArticleId
 } from "pages/articleDetailsPage/model/services/fetchCommentByArticleId/FetchCommentByArticleId";
+import {AddNewCommentForm} from "features/addNewComment";
+import {AddCommentForArticle} from "pages/articleDetailsPage/model/services/addCommentForArticle/AddCommentForArticle";
 
 
 
@@ -43,7 +45,21 @@ const Reducers: ReducersList = {
     const comments = useSelector(getArticleCommentSelector.selectAll)
     const isLoading = useSelector(getArticleCommentIsLoadingSelector)
     const error = useSelector(getArticleCommentErrorSelector)
+
+
+
+
     const dispatch = useAppDispatch();
+
+
+
+    // send comment to api usage async thunk
+    const onSendCommentToApi = useCallback((text:string) => {
+        dispatch(AddCommentForArticle(text))
+    }, [dispatch])
+
+
+
      useEffect(() => {
          dispatch(FetchCommentByArticleId(id))
      }, []);
@@ -63,6 +79,7 @@ const Reducers: ReducersList = {
          <div className={classNames(cls.ArticleDetailsPage)}>
              <ArticleDetails article_id={id}/>
              <Text className={classNames(cls.commentTitle)} title={t('Комментарии')}/>
+             <AddNewCommentForm onSendCommentToApi={onSendCommentToApi}/>
              <CommentList
                  isLoading={isLoading}
                  listOfComments={comments}/>

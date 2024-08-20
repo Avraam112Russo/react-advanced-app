@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { RoutePath } from 'app/providers/router/routeConfig/routeConfig';
 import {StateSchema} from "app/providers/storeProvider";
 
 export function RequireAuth({ children }: { children: JSX.Element }) {

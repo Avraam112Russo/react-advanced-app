@@ -8,6 +8,7 @@ import {To} from "history";
 import {NavigateOptions} from "react-router";
 import {ArticleDetailsSchema} from "entities/article/model/types/ArticleDetailsSchema";
 import {ArticleDetailsCommentSchema} from "pages/articleDetailsPage";
+import {AddNewCommentSchema} from "features/addNewComment";
 
 
 
@@ -23,6 +24,7 @@ export interface StateSchema {
     profile?:ProfileSchema,
     article_details?: ArticleDetailsSchema,
     article_details_comment?: ArticleDetailsCommentSchema,
+    addNewComment?: AddNewCommentSchema,
 }
 
 // retrieve keys of StateSchema (counter, user, login)

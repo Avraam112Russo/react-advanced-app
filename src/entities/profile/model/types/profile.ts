@@ -10,6 +10,7 @@ export enum VALIDATE_PROFILE_ERROR {
     SERVER_ERROR_500 = 'SERVER_ERROR_500',
 }
 export interface Profile{
+        id?:string,
         first?:string,
         lastname?: string,
         age?: number,

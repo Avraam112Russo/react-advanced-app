@@ -48,7 +48,7 @@ export const loginByUsername =
             return response.data
         }catch (error){
             console.log("Something went wrong: " + error);
-            rejectWithValue(i18n.t('Неверный логин или пароль'));
+            return rejectWithValue(i18n.t('Неверный логин или пароль'));
         }
     },
 )

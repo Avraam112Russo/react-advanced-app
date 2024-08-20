@@ -28,7 +28,8 @@ export const UpdateProfileData =
             try {
                 // get data from inputs form
                 const formData = getProfileFormAndData(getState());
-                const response = await extra.api.put<Profile>("/profile", formData)
+                const profile_id = formData?.id;
+                const response = await extra.api.put<Profile>("/profile/" + profile_id, formData)
 
                 const data = response.data;
                 const validateProfileErrors = validateProfile(data);

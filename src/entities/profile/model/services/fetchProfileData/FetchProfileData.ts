@@ -11,14 +11,12 @@ import {ThunkConfig} from "app/providers/storeProvider/config/StateSchema";
 export const FetchProfileData =
 
     // 1 arg -> return type, 2 arg -> type of arg, 3 arg -> type of error, extra
-    createAsyncThunk<Profile, void, ThunkConfig<string>>(
+    createAsyncThunk<Profile, string, ThunkConfig<string>>(
         'profile/fetchProfileData',
 
 
 
-        // _ mean that we don't have argument
-        //@ts-ignore
-        async (_, thunkAPI) => {
+        async (profileID, thunkAPI) => {
             // const {t} = useTranslation();
             const {
                 extra,
@@ -27,7 +25,7 @@ export const FetchProfileData =
 
             try {
 
-                const response = await extra.api.get<Profile>("/profile")
+                const response = await extra.api.get<Profile>("/profile/" + profileID)
 
                 const data = response.data;
                 console.log(data)

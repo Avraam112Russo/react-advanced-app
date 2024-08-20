@@ -18,7 +18,7 @@ const CommentAdapter = createEntityAdapter<Comment>({
     selectId: (comment: Comment) => comment.id,
 
 })
-// usage selector we get normalizing data
+// usage selectors we get normalizing data
 export const getArticleCommentSelector =
     CommentAdapter.getSelectors<StateSchema>((state) =>
     state.article_details_comment || CommentAdapter.getInitialState()

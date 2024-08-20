@@ -9,6 +9,9 @@ import {useCallback} from "react";
 import {useAppDispatch} from "app/providers/storeProvider/config/store";
 import {ProfileActions} from "entities/profile/model/slice/ProfileSlice";
 import {UpdateProfileData} from "entities/profile/model/services/updateProfileData/UpdateProfileData";
+import {getProfileFormAndData} from "entities/profile/model/selectors/getProfileData/getProfileFormAndData";
+import {GetProfileData} from "entities/profile/model/selectors/getProfileData/getProfileData";
+import {GetUserAuthDataSelector} from "entities/user/model/selector/getUserAuthDataSelector";
 export interface ProfilePageHeaderProps {
     className?: string;
 }
@@ -16,6 +19,15 @@ export const ProfilePageHeader = ({className}:ProfilePageHeaderProps) => {
     const {t} = useTranslation();
     const read_only = useSelector((state: StateSchema) => state.profile?.readonly);
     const dispatch = useAppDispatch();
+
+
+    const user_auth_data = useSelector(GetUserAuthDataSelector) // get currently user data
+    const currently_profile_data = useSelector(GetProfileData) // get profile that now user view
+
+
+    const canEdit = user_auth_data?.id === currently_profile_data?.id // the user can only change his profile
+
+
 
     // start edit profile
     const onEdit = useCallback(()=> {
@@ -35,29 +47,39 @@ export const ProfilePageHeader = ({className}:ProfilePageHeaderProps) => {
     return (
         <div className={classNames(cls.ProfilePageHeader)}>
                 <Text text={t('Профиль')}/>
-            {read_only == true ? (
-                <Button
-                    onClick={onEdit}
-                    className={classNames(cls.editBtn)}
-                    buttonTheme={ButtonTheme.OUTLINE}>
-                    {t('Редактировать')}
-                </Button>
-            ) :(
-                <>
-                <Button
-                    onClick={onCancelEdit}
-                    className={classNames(cls.editBtn)}
-                    buttonTheme={ButtonTheme.OUTLINE_RED}>
-                    {t("Отменить")}
-                </Button>
-                <Button
-                onClick={onSave}
-            className={classNames('')}
-            buttonTheme={ButtonTheme.OUTLINE}>
-            {t("Сохранить")}
-                </Button>
-                </>
-            )}
+
+
+            {/*the user can only change his profile*/}
+            {canEdit === true && (
+                <div className={cls.editBtnWrapper}>
+                    {read_only == true ? (
+                        <Button
+                            onClick={onEdit}
+                            className={classNames(cls.editBtn)}
+                            buttonTheme={ButtonTheme.OUTLINE}>
+                            {t('Редактировать')}
+                        </Button>
+                    ) :(
+                        <>
+                            <Button
+                                onClick={onCancelEdit}
+                                className={classNames(cls.editBtn)}
+                                buttonTheme={ButtonTheme.OUTLINE_RED}>
+                                {t("Отменить")}
+                            </Button>
+                            <Button
+                                onClick={onSave}
+                                className={classNames('')}
+                                buttonTheme={ButtonTheme.OUTLINE}>
+                                {t("Сохранить")}
+                            </Button>
+                        </>
+                    )}
+                </div>
+            )
+
+
+            }
 
         </div>
     );
