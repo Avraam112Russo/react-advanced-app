@@ -21,7 +21,7 @@ export const SideBarItem = memo(({item, collapsed}:SideBarItemProps) => {
     const isAuth = useSelector((state:StateSchema) => state.user.userAuthData)
 
 
-    // if user not login
+    // if user not login we don't show icon (profile, articles, etc...)
     if(item.authOnly && !isAuth){
         return null;
     }

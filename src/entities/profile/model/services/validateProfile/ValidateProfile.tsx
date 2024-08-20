@@ -1,6 +1,9 @@
 import {Profile} from "entities/profile";
 import {VALIDATE_PROFILE_ERROR} from "entities/profile/model/types/profile";
 
+
+
+// async request to backend
 export const validateProfile = (profile: Profile) => {
     const {first, lastname,country, age}=profile
     const errors:VALIDATE_PROFILE_ERROR[] = [];

@@ -1,9 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import axios from "axios";
-import {User, userActions} from "entities/user";
-import {useTranslation} from "react-i18next";
 import i18n from "shared/config/i18n/i18n";
-import {LOCAL_STORAGE_USER_KEY} from "shared/global_const/local_storage";
 import {Profile} from "entities/profile";
 import {ThunkConfig} from "app/providers/storeProvider/config/StateSchema";
 
@@ -14,7 +10,7 @@ import {ThunkConfig} from "app/providers/storeProvider/config/StateSchema";
 // async request to api
 export const FetchProfileData =
 
-    //
+    // 1 arg -> return type, 2 arg -> type of arg, 3 arg -> type of error, extra
     createAsyncThunk<Profile, void, ThunkConfig<string>>(
         'profile/fetchProfileData',
 

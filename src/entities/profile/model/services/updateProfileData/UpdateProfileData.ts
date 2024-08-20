@@ -6,9 +6,10 @@ import {validateProfile} from "entities/profile/model/services/validateProfile/V
 import {VALIDATE_PROFILE_ERROR} from "entities/profile/model/types/profile";
 
 
+// async request to backend
 export const UpdateProfileData =
 
-    //
+    // 1 arg -> return type, 2 arg -> type of arg, 3 arg -> type of error, extra
     createAsyncThunk<Profile, void, ThunkConfig<VALIDATE_PROFILE_ERROR[]>>(
         'profile/updateProfileData',
 

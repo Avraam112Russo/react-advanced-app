@@ -6,6 +6,8 @@ import {ProfileSchema} from "entities/profile";
 import {AxiosInstance} from "axios";
 import {To} from "history";
 import {NavigateOptions} from "react-router";
+import {ArticleDetailsSchema} from "entities/article/model/types/ArticleDetailsSchema";
+import {ArticleDetailsCommentSchema} from "pages/articleDetailsPage";
 
 
 
@@ -16,9 +18,11 @@ export interface StateSchema {
     counter: CounterSchema,
     user: UserSchema,
 
-    // lazy reducers
+    // lazy reducers with (?)
     login?: LoginSchema,
     profile?:ProfileSchema,
+    article_details?: ArticleDetailsSchema,
+    article_details_comment?: ArticleDetailsCommentSchema,
 }
 
 // retrieve keys of StateSchema (counter, user, login)

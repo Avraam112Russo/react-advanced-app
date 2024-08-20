@@ -16,6 +16,9 @@ interface DynamicModuleLoaderProps {
     removeAfterUnmount?: boolean;
 }
 
+
+
+// reused wrapper for async loading reducer
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
     const {
         children,

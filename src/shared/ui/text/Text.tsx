@@ -10,12 +10,17 @@ export enum TextAlign{
     LEFT = 'left',
     CENTER = 'center'
 }
+export enum TextSize{
+    M = 'size_m',
+    L = 'size_l',
+}
 export interface TextProps {
     className?: string,
     title?:string,
-    text:string,
+    text?:string,
     theme?: TextTheme,
-    align?: TextAlign
+    align?: TextAlign,
+    size?: TextSize
 }
 //memo() cached component
 export const Text = memo((props:TextProps) => {
@@ -24,9 +29,14 @@ export const Text = memo((props:TextProps) => {
         text,
         title,
         theme = TextTheme.NORMAL, // default
-        align = TextAlign.LEFT
+        align = TextAlign.LEFT,
+        size = TextSize.M
     } = props;
-    const MODS_CLASSNAMES = {[cls[theme]]: true, [cls[align]]: true}
+    const MODS_CLASSNAMES = {
+        [cls[theme]]: true,
+        [cls[align]]: true,
+        [cls[size]]: true
+    }
     return (
         <div className={classNames(cls.text, MODS_CLASSNAMES, [className])}>
             {title && <p className={classNames(cls.title)}>{title}</p>}

@@ -51,6 +51,8 @@ export const SideBar = memo(({className}:SideBarProps) => {
 
 
             <div className={classNames(cls.items)}>
+
+                {/*list of sideBar items in item.ts*/}
                 {SideBarItemList.map((item) => (
 
                         <SideBarItem

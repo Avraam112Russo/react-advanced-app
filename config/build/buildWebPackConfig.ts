@@ -16,7 +16,10 @@ export function buildWebPackConfig(options: BuildOptions): webpack.Configuration
             // output build app
             filename: '[name].[contenthash].js',
             path: paths.build,
-            clean: true // old output files will remove after refresh building project
+            clean: true, // old output files will remove after refresh building project
+
+            // we can make request with path variable /article_details/1
+            publicPath:'/'
         },
         module: {
             // rules - handle files which not .js (.css, .scss, .jpeg, .svg, .png, etc...)
