@@ -6,7 +6,7 @@ import {
     ArticleSortOrder,
     ArticleType,
     ArticleViewType
-} from "entities/article/model/types/Article";
+} from "entities/singleArticle/model/types/Article";
 import {ArticlePageSchema} from "pages/articlePage";
 import {fetchArticleList} from "pages/articlePage/model/service/fetchArticleList";
 import {LOCAL_STORAGE_ARTICLE_VIEW} from "shared/global_const/local_storage";
@@ -47,7 +47,7 @@ const articlePageSlice = createSlice({
     reducers: {
         setView: (state, action) => {
             state.view = action.payload
-            localStorage.setItem(LOCAL_STORAGE_ARTICLE_VIEW, action.payload) // save selected article view
+            localStorage.setItem(LOCAL_STORAGE_ARTICLE_VIEW, action.payload) // save selected singleArticle view
         },
         setPage: (state, action:PayloadAction<number>) => {
             state.page = action.payload
@@ -69,7 +69,7 @@ const articlePageSlice = createSlice({
         initStateArticleView: (state) => {
             const view = localStorage.getItem(LOCAL_STORAGE_ARTICLE_VIEW) as ArticleViewType
             state.view = view;
-            state.limit = view === ArticleViewType.BIG? 4 : 6 // if big type view we show only 4 article in one page
+            state.limit = view === ArticleViewType.BIG? 4 : 6 // if big type view we show only 4 singleArticle in one page
             state._inited=true
         }
 

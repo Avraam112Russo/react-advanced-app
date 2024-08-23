@@ -6,8 +6,8 @@ import {
 import {Comment} from "entities/comment";
 import {StateSchema} from "app/providers/storeProvider";
 import {ArticleDetailsCommentSchema} from "pages/articleDetailsPage";
-import {FetchArticleById} from "entities/article/model/services/fetchArticleById/FetchArticleById";
-import {Article} from "entities/article/model/types/Article";
+import {FetchArticleById} from "entities/singleArticle/model/services/fetchArticleById/FetchArticleById";
+import {Article} from "entities/singleArticle/model/types/Article";
 import {
     FetchCommentByArticleId
 } from "pages/articleDetailsPage/model/services/fetchCommentByArticleId/FetchCommentByArticleId";

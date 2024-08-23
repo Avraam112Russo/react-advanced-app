@@ -6,7 +6,7 @@ import {
     ArticleSortOrder,
     ArticleSortField,
     ArticleType
-} from "entities/article/model/types/Article";
+} from "entities/singleArticle/model/types/Article";
 
 export interface ArticlePageSchema extends EntityState<Article >{
     isLoading?:boolean,

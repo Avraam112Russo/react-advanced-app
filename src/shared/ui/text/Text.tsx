@@ -3,6 +3,7 @@ import cls from "./Text.module.scss"
 import {memo} from "react";
 export enum TextTheme{
     NORMAL = "normal",
+    INVERTED = "inverted",
     ERROR = "error",
 }
 export enum TextAlign{

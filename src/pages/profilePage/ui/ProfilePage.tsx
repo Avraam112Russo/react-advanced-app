@@ -125,5 +125,5 @@ const reducers: ReducersList = {
         </DynamicModuleLoader>
     );
 };
-
+// lazy components work only with default import
 export default ProfilePage;

@@ -4,7 +4,7 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {Profile} from "entities/profile";
 import {ThunkConfig} from "app/providers/storeProvider/config/StateSchema";
 import i18n from "shared/config/i18n/i18n";
-import {Article, ArticleType} from "entities/article/model/types/Article";
+import {Article, ArticleType} from "entities/singleArticle/model/types/Article";
 import {
     articlePageLimitSelector,
     articlePageNumberPageSelector,
@@ -25,7 +25,7 @@ export const fetchArticleList =
 
     // 1 arg -> return type, 2 arg -> type of arg, 3 arg -> type of error, extra
     createAsyncThunk<Article[], FetchArticleListProps, ThunkConfig<string>>(
-        'article/fetchArticleByID',
+        'singleArticle/fetchArticleByID',
 
 
 

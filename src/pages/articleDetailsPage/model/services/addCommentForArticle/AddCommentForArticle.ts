@@ -5,8 +5,8 @@ import {LOCAL_STORAGE_USER_KEY} from "shared/global_const/local_storage";
 import i18n from "shared/config/i18n/i18n";
 import {Comment} from "entities/comment";
 import {useSelector} from "react-redux";
-import {GetUserAuthDataSelector} from "entities/user/model/selector/getUserAuthDataSelector";
-import {getArticleDetailsData} from "entities/article/model/selectors/ArticleDetailsSelector";
+import {getUserAuthDataSelector} from "entities/user/model/selector/getUserAuthDataSelector";
+import {getArticleDetailsData} from "entities/singleArticle/model/selectors/ArticleDetailsSelector";
 import {AddNewCommentAction} from "features/addNewComment/model/slice/AddNewCommentSlice";
 import {
     FetchCommentByArticleId
@@ -34,8 +34,8 @@ export const AddCommentForArticle =
             } = thunkAPI;
 
 
-            const user = GetUserAuthDataSelector(getState()) // get user auth data from state
-            const article = getArticleDetailsData(getState()) // get article from state
+            const user = getUserAuthDataSelector(getState()) // get user auth data from state
+            const article = getArticleDetailsData(getState()) // get singleArticle from state
 
             if (!user || !commentText || !article) {
                 return rejectWithValue('Error while send comment to api');

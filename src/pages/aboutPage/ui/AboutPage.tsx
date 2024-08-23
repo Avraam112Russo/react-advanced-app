@@ -17,4 +17,6 @@ const AboutPage = () => {
     );
 };
 
+
+// lazy components work only with default import
 export default AboutPage;

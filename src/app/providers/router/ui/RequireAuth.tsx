@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { RoutePath } from 'app/providers/router/routeConfig/routeConfig';
 import {StateSchema} from "app/providers/storeProvider";
 
-export function RequireAuth({ children }: { children: JSX.Element }) {
+export function RequireAuth({ children}: { children?: JSX.Element }) {
     const auth = useSelector((state:StateSchema) => state.user.userAuthData);
     const location = useLocation();
 

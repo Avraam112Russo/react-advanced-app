@@ -26,7 +26,7 @@ const AppRouter = () => {
 
                 // if router is Auth only, wrap it usage </RequireAuth>
                 element={
-                route.authOnly ? <RequireAuth > {element}</RequireAuth> : element}
+                route.authOnly ? <RequireAuth children={element} />  : element}
             />
 
             );

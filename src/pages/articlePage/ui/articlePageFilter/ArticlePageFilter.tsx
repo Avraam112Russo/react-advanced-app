@@ -1,11 +1,11 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from "./ArticlePageFilter.module.scss"
 import {useCallback, useMemo} from "react";
-import {ArticleSortField, ArticleSortOrder, ArticleType, ArticleViewType} from "entities/article/model/types/Article";
+import {ArticleSortField, ArticleSortOrder, ArticleType, ArticleViewType} from "entities/singleArticle/model/types/Article";
 import {articlePageAction} from "pages/articlePage/model/slice/articlePageSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {useAppDispatch} from "app/providers/storeProvider/config/store";
-import {ArticleViewTypeSelector} from "entities/article";
+import {ArticleViewTypeSelector} from "entities/singleArticle";
 import {
     articlePageSearchStringSelector,
     articlePageSortFieldSelector,
@@ -16,11 +16,11 @@ import {Select} from "shared/ui/select/Select";
 import {useTranslation} from "react-i18next";
 import {Card} from "shared/ui/card/Card";
 import {Input} from "shared/ui/input/Input";
-import {ArticleSortSelect} from "entities/article/ui/articleSortSelect/ArticleSortSelect";
+import {ArticleSortSelect} from "entities/singleArticle/ui/articleSortSelect/ArticleSortSelect";
 import {fetchArticleList} from "pages/articlePage/model/service/fetchArticleList";
 import {useDebounce} from "shared/lib/hooks/useDebounce/useDebounce";
 import {TabItem, Tabs} from "shared/ui/tabs/Tabs";
-import {ArticleTypeTabs} from "entities/article/ui/articleTypeTabs/ArticleTypeTabs";
+import {ArticleTypeTabs} from "entities/singleArticle/ui/articleTypeTabs/ArticleTypeTabs";
 export interface ArticlePageFilterProps {
     className?: string;
 }
@@ -75,7 +75,7 @@ export const ArticlePageFilter = ({className}:ArticlePageFilterProps) => {
     const onChangeType = useCallback((value:ArticleType) => {
         dispatch(articlePageAction.setType(value))
         dispatch(articlePageAction.setPage(1))
-        debouncedFetchData(); // request to api with delay 500ms
+        fetchFilterData(); // request to api with delay 500ms
     },[dispatch, debouncedFetchData])
 
     return (

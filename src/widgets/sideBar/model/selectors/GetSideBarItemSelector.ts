@@ -1,5 +1,5 @@
 import {createSelector} from "@reduxjs/toolkit";
-import {GetUserAuthDataSelector} from "entities/user/model/selector/getUserAuthDataSelector";
+import {getUserAuthDataSelector} from "entities/user/model/selector/getUserAuthDataSelector";
 import {RoutePath} from "app/providers/router/routeConfig/RouteConfig";
 import MainIcon from "shared/assets/icons/main-icon.svg";
 import AboutUsIcon from "shared/assets/icons/articles.svg";
@@ -9,7 +9,7 @@ import ArticleIcon from "shared/assets/icons/articles.svg";
 import {SIdeBarItemType} from "widgets/sideBar/model/types/SideBar";
 
 export const getSideBarItemSelector = createSelector(
-    GetUserAuthDataSelector,
+    getUserAuthDataSelector,
     userData => {
         const sideBarItemList: SIdeBarItemType[] = [
             {

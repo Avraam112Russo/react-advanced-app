@@ -27,3 +27,18 @@ body{
 //  overflow-y: auto; // scroll inside
 //  width: 100%;
 //}
+
+
+// scrollbar styles
+*::-webkit-scrollbar {
+  width: 12px;               /* ширина scrollbar */
+  height: 8px;               /* ширина scrollbar */
+}
+*::-webkit-scrollbar-track {
+  background: var(--card-bg);        /* цвет дорожки */
+}
+*::-webkit-scrollbar-thumb {
+  background-color: blue;    /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+  border: 3px solid var(--inverted-primary-color);  /* padding вокруг плашки */
+}

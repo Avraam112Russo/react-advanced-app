@@ -30,5 +30,5 @@ const MainPage = () => {
         </PageWrapper>
     );
 };
-
+// lazy components work only with default import
 export default MainPage;

@@ -6,11 +6,14 @@ import {ProfileSchema} from "entities/profile";
 import {AxiosInstance} from "axios";
 import {To} from "history";
 import {NavigateOptions} from "react-router";
-import {ArticleDetailsSchema} from "entities/article/model/types/ArticleDetailsSchema";
+import {ArticleDetailsSchema} from "entities/singleArticle/model/types/ArticleDetailsSchema";
 import {ArticleDetailsCommentSchema} from "pages/articleDetailsPage";
 import {AddNewCommentSchema} from "features/addNewComment";
 import {ArticlePageSchema} from "pages/articlePage";
 import {SaveScrollSchema} from "features/scrollSave";
+import {
+    ArticleDetailsPageRecommendationSchema
+} from "pages/articleDetailsPage/model/types/ArticleDetailsPageRecomendationSchema";
 
 
 
@@ -29,7 +32,8 @@ export interface StateSchema {
     article_details?: ArticleDetailsSchema,
     article_details_comment?: ArticleDetailsCommentSchema,
     addNewComment?: AddNewCommentSchema,
-    articlesPage?:ArticlePageSchema
+    articlesPage?:ArticlePageSchema,
+    recommendation?: ArticleDetailsPageRecommendationSchema
 }
 
 // retrieve keys of StateSchema (counter, user, login)

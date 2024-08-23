@@ -1,7 +1,7 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from "./ArticlePage.module.scss"
 import {memo, useCallback, useEffect} from "react";
-import {ArticleList} from "entities/article/ui/articleList/ArticleList";
+import {ArticleList} from "entities/singleArticle/ui/articleList/ArticleList";
 import {DynamicModuleLoader, ReducersList} from "shared/lib/dynamicModuleLoader/DynamicModuleLoader";
 import {
     articlePageAction,
@@ -17,11 +17,11 @@ import {
     articlePageIsLoadingSelector, articlePageNumberPageSelector,
     articlePageViewTypeSelector
 } from "pages/articlePage/model/selectors/articlePageSelector";
-import {ArticleViewTypeSelector} from "entities/article";
+import {ArticleViewTypeSelector} from "entities/singleArticle";
 import {PageWrapper} from "widgets/pageWrapper/PageWrapper";
 import {fetchNextArticlesPage} from "pages/articlePage/model/service/fetchNextArticlesPage";
 import {ArticlePageFilter} from "pages/articlePage/ui/articlePageFilter/ArticlePageFilter";
-import {ArticleSortField, ArticleSortOrder} from "entities/article/model/types/Article";
+import {ArticleSortField, ArticleSortOrder} from "entities/singleArticle/model/types/Article";
 
 export interface ArticlePageProps {
     className?: string;
@@ -53,11 +53,11 @@ const ArticlePage = ({className}:ArticlePageProps) => {
             // const orderParamFromUrl = searchParams.get("order") as ArticleSortOrder;
             // const sortParamFromUrl = searchParams.get("sort") as ArticleSortField;
             // const searchParamFromUrl = searchParams.get("search");
-            //
-            //
-            // // update state and save query params from url
-            // // we can send full link with all query params to friend
-            // // when he opens link, all filters and sort will accept
+
+
+            // update state and save query params from url
+            // we can send full link with all query params to friend
+            // when he opens link, all filters and sort will accept
             // if (orderParamFromUrl){
             //     dispatch(articlePageAction.setOrder(orderParamFromUrl))
             // }
@@ -65,7 +65,7 @@ const ArticlePage = ({className}:ArticlePageProps) => {
             //     dispatch(articlePageAction.setSortField(sortParamFromUrl));
             // }
             // if (searchParamFromUrl){
-            //     dispatch(articlePageAction.setSearch(searchParams));
+            //     dispatch(articlePageAction.setSearch(searchParamFromUrl));
             // }
 
             dispatch(articlePageAction.initStateArticleView());
@@ -101,4 +101,5 @@ const ArticlePage = ({className}:ArticlePageProps) => {
         </DynamicModuleLoader>
     );
 };
+// lazy components work only with default import
 export default memo(ArticlePage);

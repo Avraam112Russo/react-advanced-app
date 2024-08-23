@@ -11,7 +11,7 @@ import {ProfileActions} from "entities/profile/model/slice/ProfileSlice";
 import {UpdateProfileData} from "entities/profile/model/services/updateProfileData/UpdateProfileData";
 import {getProfileFormAndData} from "entities/profile/model/selectors/getProfileData/getProfileFormAndData";
 import {GetProfileData} from "entities/profile/model/selectors/getProfileData/getProfileData";
-import {GetUserAuthDataSelector} from "entities/user/model/selector/getUserAuthDataSelector";
+import {getUserAuthDataSelector} from "entities/user/model/selector/getUserAuthDataSelector";
 export interface ProfilePageHeaderProps {
     className?: string;
 }
@@ -21,7 +21,7 @@ export const ProfilePageHeader = ({className}:ProfilePageHeaderProps) => {
     const dispatch = useAppDispatch();
 
 
-    const user_auth_data = useSelector(GetUserAuthDataSelector) // get currently user data
+    const user_auth_data = useSelector(getUserAuthDataSelector) // get currently user data
     const currently_profile_data = useSelector(GetProfileData) // get profile that now user view
 
 

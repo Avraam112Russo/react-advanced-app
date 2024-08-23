@@ -37,7 +37,6 @@ export const PageWrapper = ({className, children, onScrollEnd}:PageWrapperProps)
 
     // useDebounce -> call function after some delay
     const onScroll = useThrottle((event:UIEvent<HTMLDivElement>) => {
-        console.log("SCROLL");
         dispatch(scrollSaveActions.setScrollPosition({
             position: event.currentTarget.scrollTop, // set currently scroll position to state
             path: pathname

@@ -26,7 +26,7 @@ export const FetchCommentByArticleId =
             }
             try {
 
-                // get article by id
+                // get singleArticle by id
                 const response = await extra.api.get<Comment[]>("/comments/", {
                     params:{
                         articleId,
