@@ -13,9 +13,7 @@ const AppRouter = () => {
     const render_with_require_auth_wrapper = useCallback((route:AppRouteProps) => {
         const element = (
             <Suspense fallback={<PageLoader/>}>{/*we need suspense for lazy loading components*/}
-                <div className={"page-wrapper"}>
                     {route.element}
-                </div>
 
             </Suspense>
         )

@@ -3,6 +3,8 @@ import {useTranslation} from "react-i18next";
 import {MockErrorButton} from "app/providers/errorBoundary";
 import {Counter} from "entities/counter";
 import {Input} from "shared/ui/input/Input";
+import {PageWrapper} from "widgets/pageWrapper/PageWrapper";
+import {classNames} from "shared/lib/classNames/classNames";
 
 const MainPage = () => {
     const {t} = useTranslation('mainPage');// loading translate only mainPage.json chunk
@@ -11,7 +13,7 @@ const MainPage = () => {
         setValue(value);
     }
     return (
-        <div>
+        <PageWrapper className={classNames('', {}, [])}>
             <MockErrorButton/>
             <br/>
             <Counter/>
@@ -25,7 +27,7 @@ const MainPage = () => {
                 onChange={onChangeValue}/>
             {t('Главная')}
             {/*t('Key')*/}
-        </div>
+        </PageWrapper>
     );
 };
 

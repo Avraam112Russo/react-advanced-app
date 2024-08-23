@@ -6,10 +6,10 @@ import {ThemeSwitcher} from "widgets/themeSwitcher";
 import {LangSwitcher} from "widgets/langSwitcher/LangSwitcher";
 import {useTranslation} from "react-i18next";
 
-import {SideBarItemList} from "widgets/sideBar/model/item";
 import {SideBarItem} from "widgets/sideBar/ui/sideBarItem/SideBarItem";
 import {useSelector} from "react-redux";
 import {StateSchema} from "app/providers/storeProvider";
+import {getSideBarItemSelector} from "widgets/sideBar/model/selectors/GetSideBarItemSelector";
 
 export interface SideBarProps {
     className?: string;
@@ -21,7 +21,7 @@ export const SideBar = memo(({className}:SideBarProps) => {
         setCollapsed(prevState => !prevState);
     }
     const {t} = useTranslation();
-
+    const SideBarItemList = useSelector(getSideBarItemSelector) // get sidebar items
 
     // useMemo -> cache component <SideBarItem/>, while dependencies array will not change [collapse]
     const itemsList = useMemo(() => SideBarItemList.map((item) => (
@@ -31,7 +31,7 @@ export const SideBar = memo(({className}:SideBarProps) => {
                 collapsed={collapse}
                 item={item} />
         )
-    ), [collapse])
+    ), [collapse, SideBarItemList])
 
     return (
         <div
@@ -52,15 +52,10 @@ export const SideBar = memo(({className}:SideBarProps) => {
 
             <div className={classNames(cls.items)}>
 
-                {/*list of sideBar items in item.ts*/}
-                {SideBarItemList.map((item) => (
 
-                        <SideBarItem
-                            key={item.path}
-                            collapsed={collapse}
-                            item={item} />
-                    )
-                )}
+                {itemsList}
+
+
 
                 </div>
 

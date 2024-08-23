@@ -18,7 +18,7 @@ const CommentAdapter = createEntityAdapter<Comment>({
     selectId: (comment: Comment) => comment.id,
 
 })
-// usage selectors we get normalizing data
+// usage selector we get normalizing data
 export const getArticleCommentSelector =
     CommentAdapter.getSelectors<StateSchema>((state) =>
     state.article_details_comment || CommentAdapter.getInitialState()
@@ -29,6 +29,8 @@ const ArticleDetailsCommentSlice = createSlice({
     initialState: CommentAdapter.getInitialState<ArticleDetailsCommentSchema>({
         error: undefined,
         isLoading:false,
+
+        // normalizing data
         ids:[],
         entities:{}
     }),

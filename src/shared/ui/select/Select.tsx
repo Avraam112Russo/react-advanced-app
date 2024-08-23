@@ -25,7 +25,7 @@ export const Select = memo((props:SelectProps) => {
         }
     }
     const optionList = useMemo(() => {
-        return option.map((opt)=> (
+        return option?.map((opt)=> (
 
             <option
                 key={opt.value}
@@ -36,11 +36,11 @@ export const Select = memo((props:SelectProps) => {
         ))
     }, [])
     return (
-        <div className={classNames(cls.Wrapper)}>
+        <div className={classNames(cls.Wrapper, {}, [className])}>
             {
                 label &&(
           <span className={cls.label}>
-              Enter:
+              {label}
           </span>
                 )}
             <select

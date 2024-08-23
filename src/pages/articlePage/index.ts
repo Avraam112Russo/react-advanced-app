@@ -1,2 +1,3 @@
 import ArticlePageLazy from "pages/articlePage/ui/articlePage/ArticlePage.lazy";
-export { ArticlePageLazy as ArticlePage };
+import {ArticlePageSchema} from "./model/types/articlePageSchema"
+export { ArticlePageLazy as ArticlePage, ArticlePageSchema };

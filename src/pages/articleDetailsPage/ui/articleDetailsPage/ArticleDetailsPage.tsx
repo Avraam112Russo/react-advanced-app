@@ -2,7 +2,7 @@ import {classNames} from "shared/lib/classNames/classNames";
 import cls from "./ArticleDetailsPage.module.scss"
 import {memo, useCallback, useEffect} from "react";
 import {ArticleDetails} from "entities/article";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {Text} from "shared/ui/text/Text";
 import {CommentList} from "entities/comment";
@@ -22,9 +22,9 @@ import {
 } from "pages/articleDetailsPage/model/services/fetchCommentByArticleId/FetchCommentByArticleId";
 import {AddNewCommentForm} from "features/addNewComment";
 import {AddCommentForArticle} from "pages/articleDetailsPage/model/services/addCommentForArticle/AddCommentForArticle";
-
-
-
+import {Button, ButtonTheme} from "shared/ui/button/Button";
+import {RoutePath} from "app/providers/router/routeConfig/RouteConfig";
+import {PageWrapper} from "widgets/pageWrapper/PageWrapper";
 
 
 export interface ArticleDetailsPageProps {
@@ -51,8 +51,6 @@ const Reducers: ReducersList = {
 
     const dispatch = useAppDispatch();
 
-
-
     // send comment to api usage async thunk
     const onSendCommentToApi = useCallback((text:string) => {
         dispatch(AddCommentForArticle(text))
@@ -66,24 +64,29 @@ const Reducers: ReducersList = {
 
      if (id === undefined) {
          return (
-             <div className={classNames(cls.ArticleDetailsPage)}>
+             <PageWrapper className={classNames(cls.ArticleDetailsPage)}>
              {t('Статья не найдена')}
-         </div>
+         </PageWrapper>
              )
      }
 
+     const navigate = useNavigate();
+     const onBackToList = useCallback(() => {
+         navigate(RoutePath.article) // back to list with all articles
+     }, [navigate])
      return (
          <DynamicModuleLoader reducers={Reducers} removeAfterUnmount={true}>
 
 
-         <div className={classNames(cls.ArticleDetailsPage)}>
+         <PageWrapper className={classNames(cls.ArticleDetailsPage)}>
+             <Button onClick={onBackToList} buttonTheme={ButtonTheme.OUTLINE}>{t('Назад к списку')}</Button>
              <ArticleDetails article_id={id}/>
              <Text className={classNames(cls.commentTitle)} title={t('Комментарии')}/>
              <AddNewCommentForm onSendCommentToApi={onSendCommentToApi}/>
              <CommentList
                  isLoading={isLoading}
                  listOfComments={comments}/>
-        </div>
+        </PageWrapper>
 
 
          </DynamicModuleLoader>

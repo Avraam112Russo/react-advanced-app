@@ -9,6 +9,8 @@ import {NavigateOptions} from "react-router";
 import {ArticleDetailsSchema} from "entities/article/model/types/ArticleDetailsSchema";
 import {ArticleDetailsCommentSchema} from "pages/articleDetailsPage";
 import {AddNewCommentSchema} from "features/addNewComment";
+import {ArticlePageSchema} from "pages/articlePage";
+import {SaveScrollSchema} from "features/scrollSave";
 
 
 
@@ -18,6 +20,8 @@ export interface StateSchema {
     //default static reducers
     counter: CounterSchema,
     user: UserSchema,
+    saveScroll: SaveScrollSchema,
+
 
     // lazy reducers with (?)
     login?: LoginSchema,
@@ -25,6 +29,7 @@ export interface StateSchema {
     article_details?: ArticleDetailsSchema,
     article_details_comment?: ArticleDetailsCommentSchema,
     addNewComment?: AddNewCommentSchema,
+    articlesPage?:ArticlePageSchema
 }
 
 // retrieve keys of StateSchema (counter, user, login)
@@ -52,8 +57,7 @@ export interface Redux_Store_With_Manager extends EnhancedStore<StateSchema>{
     reducerManager: ReducerManager
 }
 export interface ThunkExtraArg {
-    api: AxiosInstance;
-    navigate?: (to: To, options?: NavigateOptions) => void,
+    api: AxiosInstance
 }
 export interface ThunkConfig<T> {
     rejectValue: T;

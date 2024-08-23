@@ -8,6 +8,6 @@ const ArticleDetailsPageLazy =
         setTimeout(() => {
             // @ts-ignore
             resolve(import("./ArticleDetailsPage"));
-        }, 1500);
+        }, 300);
     }));
 export default ArticleDetailsPageLazy;

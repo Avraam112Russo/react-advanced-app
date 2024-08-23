@@ -3,9 +3,9 @@ import cls from "./SideBarItem.module.scss"
 import {AppLink, AppThemeLink} from "shared/ui/appLink/AppLink";
 import React, {memo} from "react";
 import {useTranslation} from "react-i18next";
-import {SIdeBarItemType} from "widgets/sideBar/model/item";
 import {useSelector} from "react-redux";
 import {StateSchema} from "app/providers/storeProvider";
+import {SIdeBarItemType} from "widgets/sideBar/model/types/SideBar";
 
 export interface SideBarItemProps {
     item?:SIdeBarItemType,

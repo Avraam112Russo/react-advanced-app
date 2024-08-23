@@ -43,8 +43,9 @@ export const loginByUsername =
             localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(response.data))
             // set username and id in state after successfully authentication
             dispatch(userActions.setAuthData(response.data))
+
             // redirect to /profile after login successfully
-            extra.navigate('/profile')
+            // extra.navigate('/profile/' + response.data.id)
             return response.data
         }catch (error){
             console.log("Something went wrong: " + error);

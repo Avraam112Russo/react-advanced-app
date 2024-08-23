@@ -10,11 +10,11 @@ import {useNavigate} from 'react-router-dom'
 import {NavigateFunction, NavigateOptions} from "react-router";
 import {To} from 'history'
 import {AxiosInstance} from "axios";
+import {scrollSaveReducer} from "features/scrollSave";
 
 export function createReduxStore(
     initialState?: StateSchema,
-    asyncReducers?: ReducersMapObject<StateSchema>,
-    navigate?:(to: To, options?: NavigateOptions) => void ) {
+    asyncReducers?: ReducersMapObject<StateSchema> ) {
 
 
 
@@ -24,12 +24,12 @@ export function createReduxStore(
             {
                 ...asyncReducers,
                 counter: counterReducer,
-                user: userReducer
+                user: userReducer,
+                saveScroll: scrollSaveReducer
             }
         const reducerManager = createReducerManager(rootReducers);
         const extraArg: ThunkExtraArg = {
-        api: $API,
-        navigate,
+        api: $API
     };
 
     const store =

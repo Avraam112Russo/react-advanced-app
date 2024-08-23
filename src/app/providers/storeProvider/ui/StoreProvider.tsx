@@ -13,13 +13,15 @@ export interface StoreProviderProps {
 
 // we need provider for connect react and redux
 export const StoreProvider = ({children, initialState, asyncReducers}:StoreProviderProps) => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const reduxStore =
         createReduxStore(
             initialState as StateSchema,
             asyncReducers as ReducersMapObject<StateSchema>,
-            navigate);
+            // navigate
+        );
+    console.log("render");
     return (
         <Provider store={reduxStore}>
             {children}

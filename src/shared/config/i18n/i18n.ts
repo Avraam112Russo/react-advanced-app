@@ -16,7 +16,8 @@ i18n
 
     .init({
         fallbackLng: 'ru', // default language
-        debug: __IS_DEV__ ? true : false, // enable logging
+        debug: false,
+            // __IS_DEV__ ? true : false, // enable logging
 
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default

@@ -1,10 +1,19 @@
+import {User} from "entities/user";
 
+export type ArticleSortOrder = "asc" | "desc";
 
-
-export interface ArticleSchema{
-
+// fields for type sort
+export enum ArticleSortField{
+    VIEW = "views", // sort by quantity view
+    TITLE = "title",
+    CREATED_AT = "createdAt",
 }
 
+
+export enum ArticleViewType{
+    BIG = 'BIG',
+    SMALL = 'SMALL'
+}
 
 
 
@@ -39,13 +48,16 @@ export interface ArticleCodeBlock extends ArticleBaseBlock{
 export enum ArticleType{
     IT = 'IT',
     ECONOMICS = 'ECONOMICS',
-    SCIENCE = 'SCIENCE'
+    SCIENCE = 'SCIENCE',
+    SPORT = 'SPORT',
+    ALL = 'ALL',
 }
 export interface Article {
     id: string;
     title: string;
     subtitle: string;
     img: string;
+    user:User;
     views: number;
     createdAt: string;
     type: ArticleType[];

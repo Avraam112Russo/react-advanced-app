@@ -17,6 +17,8 @@ import {MyCountry} from "entities/country/model/types/Country";
 import {getValidateError} from "entities/profile/model/selectors/getValidateError/getValidateError";
 import {Text, TextTheme} from "shared/ui/text/Text";
 import {useParams} from "react-router-dom";
+import {PageWrapper} from "widgets/pageWrapper/PageWrapper";
+import {classNames} from "shared/lib/classNames/classNames";
 
 export interface ProfilePageProps {
     className?: string;
@@ -99,7 +101,7 @@ const reducers: ReducersList = {
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
 
             {/*if we have some error*/}
-            <div>
+            <PageWrapper className={classNames('', {}, [className])}>
                 {validateErrors?.length > 0 && validateErrors.map((error) => (
                     <Text
                         key={error}
@@ -119,7 +121,7 @@ const reducers: ReducersList = {
             isLoading={isLoading}
             error={error}
             data={data_and_form}/>
-            </div>
+            </PageWrapper>
         </DynamicModuleLoader>
     );
 };

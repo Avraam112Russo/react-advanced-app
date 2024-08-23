@@ -2,7 +2,7 @@
   --bg-color: #ffffff; // background
   --inverted-bg-color: #0e0e75; // // navbar background color
   --primary-color: #0365c5; // title for example
-  --secondary-color: #0730d1; // description for example
+  --secondary-color: #078bff; // description for example
 
   --inverted-primary-color: #00ff00; // title for example
   --inverted-secondary-color: #098909; // description for example
@@ -15,5 +15,10 @@
   --skeleton-color: #c0c0e7;
   --skeleton-shadow: rgba(0 0 0 / 20%);
   //colors
-  --code-bg: #fff // background code element in article
+  --code-bg: #fff; // background code element in article
+
+
+
+  // article card
+  --card-bg: #ebebeb
 }
